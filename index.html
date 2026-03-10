@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>飞刀游戏</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        
+        <div id="ui-overlay">
+            <div id="score-display">分数: <span id="score">0</span></div>
+            <div id="level-display">关卡: <span id="level">1</span></div>
+            <div id="qi-display">气: <span id="qi">0</span>%</div>
+            <button id="start-btn">开始游戏</button>
+            <button id="sensor-btn" class="hidden">启用体感</button>
+        </div>
+        
+        <div id="level-selector" class="hidden">
+            <h3>选择关卡</h3>
+            <div class="level-buttons">
+                <button class="level-btn" data-level="1">第一关</button>
+                <button class="level-btn" data-level="2">第二关</button>
+                <button class="level-btn" data-level="3">第三关</button>
+            </div>
+        </div>
+        
+        <div id="weapon-selector" class="hidden">
+            <h3>选择武器</h3>
+            <div class="weapon-buttons">
+                <button class="weapon-btn" data-weapon="dagger">匕首</button>
+                <button class="weapon-btn" data-weapon="knife">飞刀</button>
+                <button class="weapon-btn" data-weapon="sword">短剑</button>
+                <button class="weapon-btn" data-weapon="dart">飞镖</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/config.js"></script>
+    <script src="js/sensor.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
