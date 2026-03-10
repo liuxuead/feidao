@@ -79,31 +79,51 @@ button:active {
     display: none !important;
 }
 
-#level-selector, #weapon-selector {
+#menu-selector {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.92);
     padding: 30px;
     border-radius: 20px;
     text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#level-selector, #weapon-selector {
+    margin-bottom: 25px;
 }
 
 #level-selector h3, #weapon-selector h3 {
     color: white;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 15px;
+    font-size: 20px;
 }
 
 .level-buttons, .weapon-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center;
 }
 
 .level-btn, .weapon-btn {
     width: 200px;
+    transition: all 0.2s ease;
+}
+
+.level-btn.selected, .weapon-btn.selected {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    transform: scale(1.05);
+}
+
+#play-btn {
+    margin-top: 15px;
+    font-size: 20px;
+    padding: 15px 50px;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
 }
 
 @media (max-width: 600px) {
