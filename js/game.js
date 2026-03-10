@@ -38,9 +38,7 @@ class Game {
         const imagePaths = {
             background: this.levelConfig.backgroundImage,
             target: this.levelConfig.targetImage,
-            hand: this.levelConfig.handImage,
-            fog: this.levelConfig.fogImage,
-            knife: this.levelConfig.knifeImage
+            fog: this.levelConfig.fogImage
         };
 
         const promises = Object.entries(imagePaths).map(([name, path]) => {
@@ -50,7 +48,10 @@ class Game {
                     this.images[name] = img;
                     resolve();
                 };
-                img.onerror = reject;
+                img.onerror = () => {
+                    console.log(`Failed to load ${name}`);
+                    resolve();
+                };
                 img.src = path;
             });
         });
@@ -344,14 +345,7 @@ class Game {
             const handX = this.canvas.width / 2;
             const handY = this.canvas.height * 0.7;
             
-            if (this.images.hand) {
-                ctx.save();
-                ctx.translate(handX, handY);
-                ctx.rotate(this.rotation * Math.PI / 180);
-                const handSize = 150;
-                ctx.drawImage(this.images.hand, -handSize / 2, -handSize / 2, handSize, handSize);
-                ctx.restore();
-            }
+            this.drawWeapon(handX, handY, this.rotation, this.currentWeapon);
             
             this.drawQiBar(handX, handY + 100);
         }
